@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var wordsGuessedLabel: UILabel!
@@ -37,8 +38,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func guessedLetterFieldChanged(_ sender: UITextField) {
-        let text = guessedLetterTextField.text!
-        guessedLetterButton.isEnabled = !(text.isEmpty)
+        sender.text! = String(sender.text!.last ?? " ").trimmingCharacters(in: .whitespaces)
+        guessedLetterButton.isEnabled = !(sender.text!.isEmpty)
     }
     @IBAction func doneKeyPressed(_ sender: UITextField) {
         updateUIAfterGuess()
